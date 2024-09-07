@@ -18,9 +18,8 @@ class MainActivity : AppCompatActivity() {
         button = findViewById(R.id.changeButton)
         text = findViewById(R.id.titleTextView)
 
-        var newText = savedInstanceState?.getString(KEY)
-        if (newText != null) {
-            text.setText(newText)
+        savedInstanceState?.let {
+            text.text = savedInstanceState.getString(KEY)
         }
 
 
@@ -35,14 +34,14 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-
-        var newText = savedInstanceState?.getString(KEY)
-        if (newText != null) {
-            text.setText(newText)
-        }
-    }
+//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+//        super.onRestoreInstanceState(savedInstanceState)
+//
+//        var newText = savedInstanceState?.getString(KEY)
+//        if (newText != null) {
+//            text.setText(newText)
+//        }
+//    }
 
 
 }
