@@ -26,8 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         buttonRemove.setOnClickListener {
             state = State.Removed
-            state.applyTextView(linearLayout, textView)
-            state.enableButton(buttonRemove)
+            state.apply(linearLayout, textView, buttonRemove)
         }
     }
 
@@ -43,8 +42,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             state = savedInstanceState.getSerializable(KEY) as State
         }
-        state.applyTextView(linearLayout, textView)
-        state.enableButton(buttonRemove)
+        state.apply(linearLayout, textView, buttonRemove)
+
 
         super.onRestoreInstanceState(savedInstanceState)
     }
@@ -56,23 +55,20 @@ class MainActivity : AppCompatActivity() {
 
 interface State : Serializable {
 
-    fun applyTextView(linearLayout: LinearLayout, textView: TextView)
-    fun enableButton(button: Button)
-    object Initial : State {
-        override fun applyTextView(linearLayout: LinearLayout, textView: TextView) = Unit
+    fun apply(linearLayout: LinearLayout, textView: TextView, button: Button)
 
-        override fun enableButton(button: Button) = Unit
+    object Initial : State {
+        override fun apply(linearLayout: LinearLayout, textView: TextView, button: Button) = Unit
 
     }
 
     object Removed : State {
-        override fun applyTextView(linearLayout: LinearLayout, textView: TextView) {
+        override fun apply(linearLayout: LinearLayout, textView: TextView, button: Button) {
             linearLayout.removeView(textView)
-        }
-
-        override fun enableButton(button: Button) {
             button.isEnabled = false
         }
+
+
 
     }
 }
