@@ -25,9 +25,8 @@ interface UiState : Serializable {
         override fun apply(textView: TextView, buttonInc: Button, buttonDec: Button) {
             super.apply(textView, buttonInc, buttonDec)
             buttonInc.isEnabled = false
-            Log.d("TEST", "buttonDec: ${buttonDec.isEnabled}" +
-                    "\nbuttonInc: ${buttonInc.isEnabled}")
-            buttonDec.isEnabled = true
+//            Log.d("TEST", "buttonDec: ${buttonDec.isEnabled}" +
+//                    "\nbuttonInc: ${buttonInc.isEnabled}")
         }
     }
 

@@ -7,6 +7,7 @@ interface Count {
     fun initial(number: String) : UiState
     fun increment(number : String) : UiState
     fun decrement(number : String) : UiState
+    
     class Base(private val step : Int, private val max : Int, private val min : Int) : Count {
         init {
             if (step <= 0) throw IllegalStateException("step should be positive, but was $step")
