@@ -21,5 +21,9 @@ class MainActivity : AppCompatActivity() {
         binding.actionButton.setOnClickListener {
             viewModel.load()
         }
+
+        viewModel.liveData().observe(this) { uiState ->
+            uiState.apply(binding.actionButton, binding.progressBar, binding.titleTextView)
+        }
     }
 }

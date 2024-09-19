@@ -12,7 +12,7 @@ interface UiState {
         override fun apply(actionButton: Button, progressBar: ProgressBar, textView: TextView) {
             progressBar.visibility = View.INVISIBLE
             textView.visibility = View.INVISIBLE
-            actionButton.visibility = View.VISIBLE
+            actionButton.isEnabled = true
         }
     }
 
@@ -20,7 +20,7 @@ interface UiState {
         override fun apply(actionButton: Button, progressBar: ProgressBar, textView: TextView) {
             progressBar.visibility = View.VISIBLE
             textView.visibility = View.INVISIBLE
-            actionButton.visibility = View.INVISIBLE
+            actionButton.isEnabled = false
         }
     }
 
@@ -28,7 +28,7 @@ interface UiState {
         override fun apply(actionButton: Button, progressBar: ProgressBar, textView: TextView) {
             progressBar.visibility = View.INVISIBLE
             textView.visibility = View.VISIBLE
-            actionButton.visibility = View.VISIBLE
+            actionButton.isEnabled = true
         }
     }
 
