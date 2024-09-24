@@ -10,11 +10,6 @@ interface LiveDataWrapper {
 
     class Base(
         private val liveData: MutableLiveData<UiState> = MutableLiveData()) : LiveDataWrapper {
-        private val actualCallsList = mutableListOf<UiState>()
-
-        fun checkUpdateCalls(expected : List<UiState>) {
-            liveData.value = actualCallsList[actualCallsList.size - 1]
-        }
 
         override fun update(value: UiState) {
             liveData.value = value
