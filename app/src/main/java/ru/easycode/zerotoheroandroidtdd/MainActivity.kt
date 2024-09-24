@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this, MainViewModelFactory(LiveDataWrapper.Base(), Repository.Base()))[MainViewModel::class.java]
         super.onCreate(savedInstanceState)
+
         setContentView(binding.root)
 
         viewModel.setCurrentState()
