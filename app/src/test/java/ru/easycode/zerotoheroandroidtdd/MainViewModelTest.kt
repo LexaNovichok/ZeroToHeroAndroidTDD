@@ -43,25 +43,25 @@ private interface FakeListLiveDataWrapper : ListLiveDataWrapper {
 
     class Base : FakeListLiveDataWrapper {
 
-        private val list = ArrayList<CharSequence>()
+        private val list = ArrayList<NoteModel>()
 
         override fun checkListSame(expected: List<CharSequence>) {
             assertEquals(expected, list)
         }
 
-        override fun liveData(): LiveData<List<CharSequence>> {
+        override fun liveData(): LiveData<List<NoteModel>> {
             throw IllegalStateException("not used here")
         }
 
-        override fun add(new: CharSequence) {
-            list.add(new)
+        override fun add(note: NoteModel) {
+            list.add(note)
         }
 
         override fun save(bundle: BundleWrapper.Save) {
             bundle.save(list)
         }
 
-        override fun update(list: List<CharSequence>) {
+        override fun update(list: List<NoteModel>) {
             this.list.addAll(list)
         }
     }
@@ -69,13 +69,13 @@ private interface FakeListLiveDataWrapper : ListLiveDataWrapper {
 
 class FakeBundleWrapper : BundleWrapper.Mutable {
 
-    private val cache = ArrayList<CharSequence>()
+    private val cache = ArrayList<NoteModel>()
 
-    override fun save(list: ArrayList<CharSequence>) {
+    override fun save(list: ArrayList<NoteModel>) {
         cache.addAll(list)
     }
 
-    override fun restore(): List<CharSequence> {
+    override fun restore(): List<NoteModel> {
         return cache
     }
 }
