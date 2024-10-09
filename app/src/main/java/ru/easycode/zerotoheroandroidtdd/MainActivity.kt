@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         mainViewModel.liveData().observe(this) { list ->
-            adapter.update(list)
+            adapter.update( list)
         }
     }
 
