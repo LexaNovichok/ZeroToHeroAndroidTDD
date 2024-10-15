@@ -1,6 +1,7 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 
 interface ViewModelFactory : ProvideViewModel, ClearViewModel {
@@ -21,6 +22,7 @@ interface ViewModelFactory : ProvideViewModel, ClearViewModel {
         }
 
         override fun clear(viewModelClass: Class<out ViewModel>) {
+            Log.d("LALALA", "ViewModelFactory clear $viewModelClass")
             map.remove(viewModelClass)
         }
 

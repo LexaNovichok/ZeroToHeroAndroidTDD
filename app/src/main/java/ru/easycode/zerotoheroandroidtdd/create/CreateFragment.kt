@@ -1,6 +1,7 @@
 package ru.easycode.zerotoheroandroidtdd.create
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,10 +17,17 @@ class CreateFragment : AbstractFragment<FragmentCreateBinding>() {
     override fun bind(inflater: LayoutInflater, container: ViewGroup?): FragmentCreateBinding =
         FragmentCreateBinding.inflate(inflater, container, false)
 
+    private lateinit var viewModel : CreateViewModel
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() = viewModel.comeback()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel = (activity as ProvideViewModel).viewModel(CreateViewModel::class.java)
+        viewModel = (activity as ProvideViewModel).viewModel(CreateViewModel::class.java)
+
+        Log.d("LALALA", "CreateFragment onViewCreated")
 
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() = viewModel.comeback()
@@ -33,6 +41,11 @@ class CreateFragment : AbstractFragment<FragmentCreateBinding>() {
             hideKeyBoard()
             viewModel.add(binding.inputEditText.text.toString())
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        onBackPressedCallback.remove()
     }
 
 

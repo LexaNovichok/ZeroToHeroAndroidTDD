@@ -1,5 +1,6 @@
 package ru.easycode.zerotoheroandroidtdd.list
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import ru.easycode.zerotoheroandroidtdd.core.BundleWrapper
 import ru.easycode.zerotoheroandroidtdd.create.CreateScreen
@@ -10,6 +11,10 @@ class ListViewModel(
     private val listLiveDataWrapper: ListLiveDataWrapper.Mutable,
     private val navigation : Navigation.Update
     ) : ViewModel(), ListLiveDataWrapper.Read {
+
+    init {
+        Log.d("LALALA", "ListViewModel init")
+    }
     fun create() {
         navigation.update(CreateScreen)
     }

@@ -21,6 +21,10 @@ class ListFragment : AbstractFragment<FragmentListBinding>() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as ProvideViewModel).viewModel(ListViewModel::class.java)
 
+
+        Log.d("LALALA", "ListFragment onViewCreated")
+
+
         initRcView()
 
         binding.addButton.setOnClickListener {

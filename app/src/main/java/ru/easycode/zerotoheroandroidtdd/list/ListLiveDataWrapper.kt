@@ -1,5 +1,6 @@
 package ru.easycode.zerotoheroandroidtdd.list
 
+import android.util.Log
 import ru.easycode.zerotoheroandroidtdd.core.BundleWrapper
 import ru.easycode.zerotoheroandroidtdd.core.LiveDataWrapper
 
@@ -16,6 +17,9 @@ interface ListLiveDataWrapper {
     interface All : Mutable, Add
 
     class Base : LiveDataWrapper.Abstract<List<CharSequence>>(), All {
+        init {
+            Log.d("LALALA", "ListLiveDataWrapper init")
+        }
         override fun save(bundleWrapper: BundleWrapper.Save) {
             liveData.value?.let {
                 bundleWrapper.save(ArrayList(it))
