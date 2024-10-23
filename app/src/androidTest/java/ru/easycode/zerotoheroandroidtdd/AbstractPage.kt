@@ -1,7 +1,7 @@
 package ru.easycode.zerotoheroandroidtdd
 
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.FrameLayout
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -12,7 +12,7 @@ import org.hamcrest.Matchers.allOf
 
 abstract class AbstractPage(protected val root: Int) {
 
-    protected open fun rootClass(): Class<out ViewGroup> = LinearLayout::class.java
+    protected open fun rootClass(): Class<out ViewGroup> = FrameLayout::class.java
 
     private val rootInteraction = onView(
         allOf(

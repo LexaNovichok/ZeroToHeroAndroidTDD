@@ -4,6 +4,11 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import ru.easycode.zerotoheroandroidtdd.add.AddViewModel
+import ru.easycode.zerotoheroandroidtdd.core.ClearViewModel
+import ru.easycode.zerotoheroandroidtdd.core.Repository
+import ru.easycode.zerotoheroandroidtdd.list.ListLiveDataWrapper
+import ru.easycode.zerotoheroandroidtdd.main.Navigation
 
 class AddViewModelTest {
 
@@ -13,11 +18,13 @@ class AddViewModelTest {
         val repository = FakeAddRepository.Base(order)
         val liveDataWrapper = FakeAddLiveDataWrapper.Base(order)
         val clear = FakeClearViewModel.Base(order)
+        val navigation = Navigation.Base()
         val viewModel =
             AddViewModel(
                 repository = repository,
                 liveDataWrapper = liveDataWrapper,
                 clear = clear,
+                navigation = navigation,
                 dispatcher = Dispatchers.Unconfined,
                 dispatcherMain = Dispatchers.Unconfined
             )
@@ -37,11 +44,13 @@ class AddViewModelTest {
         val repository = FakeAddRepository.Base(order)
         val liveDataWrapper = FakeAddLiveDataWrapper.Base(order)
         val clear = FakeClearViewModel.Base(order)
+        val navigation = Navigation.Base()
         val viewModel =
             AddViewModel(
                 repository = repository,
                 liveDataWrapper = liveDataWrapper,
                 clear = clear,
+                navigation = navigation,
                 dispatcher = Dispatchers.Unconfined,
                 dispatcherMain = Dispatchers.Unconfined
             )
