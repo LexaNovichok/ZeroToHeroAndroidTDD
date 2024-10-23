@@ -7,6 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import ru.easycode.zerotoheroandroidtdd.add.AddScreen
 import ru.easycode.zerotoheroandroidtdd.core.LiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.core.Repository
@@ -29,7 +30,9 @@ class ListViewModel(
     fun init() {
         viewModelScope.launch(dispatcher) {
             val value = repository.list()
-            listLiveDataWrapper.update(value)
+            withContext(dispatcherMain) {
+                listLiveDataWrapper.update(value)
+            }
         }
     }
 

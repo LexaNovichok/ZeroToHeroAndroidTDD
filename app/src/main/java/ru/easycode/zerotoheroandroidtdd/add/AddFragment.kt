@@ -1,6 +1,7 @@
 package ru.easycode.zerotoheroandroidtdd.add
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,9 @@ class AddFragment : AbstractFragment<FragmentAddBinding>() {
             hideKeyBoard()
             viewModel.add(binding.addInputEditText.text.toString())
         }
+
+
+        Log.d("LALALA", "AddFragment onViewCreated")
     }
 
     override fun onDestroyView() {

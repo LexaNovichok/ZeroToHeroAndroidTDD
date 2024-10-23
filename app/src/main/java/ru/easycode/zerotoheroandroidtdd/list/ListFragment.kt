@@ -1,10 +1,12 @@
 package ru.easycode.zerotoheroandroidtdd.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ru.easycode.zerotoheroandroidtdd.core.AbstractFragment
+import ru.easycode.zerotoheroandroidtdd.core.Adapter
 import ru.easycode.zerotoheroandroidtdd.core.ProvideViewModel
 import ru.easycode.zerotoheroandroidtdd.databinding.FragmentListBinding
 
@@ -30,6 +32,8 @@ class ListFragment : AbstractFragment<FragmentListBinding>() {
         viewModel.liveData().observe(viewLifecycleOwner) { list->
             adapter.update(ArrayList(list))
         }
+
+        Log.d("LALALA", "ListFragment onViewCreated")
     }
     private fun initRcView() = with(binding) {
         adapter = Adapter()

@@ -1,6 +1,7 @@
 package ru.easycode.zerotoheroandroidtdd.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import ru.easycode.zerotoheroandroidtdd.core.ProvideViewModel
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity(), ProvideViewModel {
             screen.show(supportFragmentManager, binding.container.id)
         }
         viewModel.init()
+
+        Log.d("LALALA", "MainActivity onCreate")
     }
 
 

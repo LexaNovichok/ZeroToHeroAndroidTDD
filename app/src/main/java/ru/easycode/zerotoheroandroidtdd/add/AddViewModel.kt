@@ -6,6 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import ru.easycode.zerotoheroandroidtdd.core.ClearViewModel
 import ru.easycode.zerotoheroandroidtdd.core.Repository
 import ru.easycode.zerotoheroandroidtdd.list.ListLiveDataWrapper
@@ -25,8 +26,10 @@ class AddViewModel(
     fun add(value : String) {
         viewModelScope.launch(dispatcher) {
             repository.add(value)
-            liveDataWrapper.add(value)
-            comeback()
+            withContext(dispatcherMain) {
+                liveDataWrapper.add(value)
+                comeback()
+            }
         }
     }
 

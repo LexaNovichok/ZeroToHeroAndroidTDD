@@ -1,4 +1,4 @@
-package ru.easycode.zerotoheroandroidtdd.list
+package ru.easycode.zerotoheroandroidtdd.core
 
 import android.view.LayoutInflater
 import android.view.View
