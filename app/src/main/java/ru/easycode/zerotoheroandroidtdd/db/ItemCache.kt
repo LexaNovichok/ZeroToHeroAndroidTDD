@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity
-data class Item(
+@Entity(tableName = "items_table")
+data class ItemCache(
     @PrimaryKey()
     @ColumnInfo(name = "id")
     var id : Long,

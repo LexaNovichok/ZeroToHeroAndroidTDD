@@ -5,23 +5,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.easycode.zerotoheroandroidtdd.R
 import ru.easycode.zerotoheroandroidtdd.databinding.ItemBinding
-import ru.easycode.zerotoheroandroidtdd.db.Item
+import ru.easycode.zerotoheroandroidtdd.db.ItemCache
 
 class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
-    private val list : ArrayList<Item> = arrayListOf()
+    private val list : ArrayList<ItemCache> = arrayListOf()
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         private val binding = ItemBinding.bind(view)
 
-        fun bind(item : Item) = with(binding) {
-            elementTextView.text = item.text
+        fun bind(itemCache : ItemCache) = with(binding) {
+            elementTextView.text = itemCache.text
         }
     }
 
-    fun update(newList : MutableList<Item>) {
+    fun update(newList : MutableList<ItemCache>) {
         val diffUtil = DiffUtilCallBack(list, newList)
         val diff = DiffUtil.calculateDiff(diffUtil)
 
@@ -43,8 +42,8 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
 
     class DiffUtilCallBack(
-        private val old : List<Item>,
-        private val new : List<Item>
+        private val old : List<ItemCache>,
+        private val new : List<ItemCache>
     ) : DiffUtil.Callback() {
         override fun getOldListSize(): Int = old.size
 

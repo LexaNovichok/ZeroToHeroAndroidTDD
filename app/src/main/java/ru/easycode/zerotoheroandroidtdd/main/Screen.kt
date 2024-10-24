@@ -30,7 +30,10 @@ interface Screen {
         }
     }
 
-    object Pop {
+    object Pop : Screen {
+        override fun show(supportFragmentManager: FragmentManager, containerId: Int) {
+            supportFragmentManager.popBackStack()
+        }
 
     }
 }
